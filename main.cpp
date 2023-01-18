@@ -15,6 +15,46 @@ void dfs(int x) {
 }
 
 
+vector<int> path;
+bool ok = false;
+
+
+void bkt(int p, int d, vector<int> place) {
+
+    if (ok || d > 7) {
+        return;
+    }
+    int source = 0;
+    int sz = place.size();
+    for (int i = 0; i < sz; ++i) {
+        place[i] = edges[place[i]][p];
+    }
+
+    int s1 = 0, s2 = 0;
+    for (int i = 1; i < sz; ++i) {
+        s1 += (place[i] == place[0]);
+    }
+
+    for (int i = 0; i < sz - 1; ++i) {
+        s2 += (place[i] == place[sz - 1]);
+    }
+
+    if (s1 == sz - 1 || s2 == sz - 1) {
+        for (int i = 0; i < path.size(); ++i) {
+            cout << path[i] << '\n';
+        }
+        ok = true;
+    }
+
+    for (int j = 0; j < edges[0].size(); ++j) {
+        path.push_back(j);
+        bkt(j, d + 1, place);
+        path.pop_back();
+    }
+
+}
+
+
 int main(int argc, char **argv) {
 
     int n, m, s;
@@ -44,6 +84,22 @@ int main(int argc, char **argv) {
                 cout << i << '\n';
             }
         }
+    }
+    if (strcmp(argv[1], "synchronize") == NULL) {
+
+        vector<int> place(n);
+        for (int i = 0; i < n; ++i) {
+            place[i] = i;
+        }
+        for (int j = 0; j < m; ++j) {
+            if (ok) {
+                break;
+            }
+            path.push_back(j);
+            bkt(j, 1, place);
+            path.pop_back();
+        }
+
     }
     
 
