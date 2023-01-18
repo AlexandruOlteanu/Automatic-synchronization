@@ -17,30 +17,35 @@ void dfs(int x) {
 
 int main(int argc, char **argv) {
 
-    if (strcmp(argv[1], "accessible") == NULL) {
-        int n, m, s;
-        cin >> n >> m >> s;
-        edges.resize(n);
-        for (int i = 0; i < n; ++i) {
-            for (int j = 1; j <= m; ++j) {
-                int x;
-                cin >> x;
-                edges[i].push_back(x);
-            }
-        }
-
-        for (int i = 1; i <= s; ++i) {
+    int n, m, s;
+    cin >> n >> m >> s;
+    int source[s + 1];
+    edges.resize(n);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 1; j <= m; ++j) {
             int x;
             cin >> x;
-            dfs(x);
+            edges[i].push_back(x);
         }
+    }
+
+    for (int i = 1; i <= s; ++i) {
+            cin >> source[i];
+    }
+
+    if (strcmp(argv[1], "accessible") == NULL) {
+        
+        for (int i = 1; i <= s; ++i) {
+            dfs(source[i]);
+        }
+        
         for (int i = 0; i < n; ++i) {
             if (accessible.count(i)) {
                 cout << i << '\n';
             }
         }
-
     }
+    
 
 
     return 0;
