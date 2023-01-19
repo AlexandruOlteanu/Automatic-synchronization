@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MAX_SEQ_SIZE 7
+
 vector<vector<int>> edges;
 set<int> accessible;
 
@@ -21,7 +23,7 @@ bool ok = false;
 
 void bkt(int p, int d, vector<int> place) {
 
-    if (ok || d > 7) {
+    if (ok || d > MAX_SEQ_SIZE) {
         return;
     }
     int source = 0;
@@ -30,16 +32,13 @@ void bkt(int p, int d, vector<int> place) {
         place[i] = edges[place[i]][p];
     }
 
-    int s1 = 0, s2 = 0;
-    for (int i = 1; i < sz; ++i) {
+    int s1 = 0;
+
+    for (int i = 0; i < sz; ++i) {
         s1 += (place[i] == place[0]);
     }
 
-    for (int i = 0; i < sz - 1; ++i) {
-        s2 += (place[i] == place[sz - 1]);
-    }
-
-    if (s1 == sz - 1 || s2 == sz - 1) {
+    if (s1 == sz) {
         for (int i = 0; i < path.size(); ++i) {
             cout << path[i] << '\n';
         }

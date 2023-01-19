@@ -1,1 +1,1 @@
-make -s run problem=synchronize < /home/alexandru_olteanu/Arch-Alex/Facultate/LFA/Automatic-synchronization/checker/tests/large1-s.in > /home/alexandru_olteanu/Arch-Alex/Facultate/LFA/Automatic-synchronization/large1-s.in.out
+make -s run problem=synchronize < /home/alexandru_olteanu/Arch-Alex/Facultate/LFA/Automatic-synchronization/checker/tests/chonk1-s.in > /home/alexandru_olteanu/Arch-Alex/Facultate/LFA/Automatic-synchronization/chonk1-s.in.out
