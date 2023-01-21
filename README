@@ -1,0 +1,9 @@
+<Copyright Alexandru Olteanu, grupa 332CA, alexandruolteanu2001@gmail.com>
+
+In aceasta tema am transpus problema automatului sub forma unui graf.
+Astfel, pentru problema de accesibilitate am folosit algoritmul de depth
+first search pentru a merge prin stari si explora toate starile accesibile.
+In problema a doua, cea de sincronizare am generat path-urile posibile de 
+lungime aleatoare. Apoi, am simulat trecerea prin stari din fiecare stare sursa 
+dupa regulile respectivului path. In final, daca un path este corect si toate 
+starile ajung in aceeasi stare finala, printam la output acest path.
